@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class CitySim9002 {
 
 	
-	    // create a LinkedList containing visitors(4 types)
+	        // create a LinkedList containing visitors(4 types)
 		public LinkedList<String> gen_visitors(Visitors visitors)
 		{
 			LinkedList<String> temp = new LinkedList<String>();
@@ -101,7 +101,7 @@ public class CitySim9002 {
 		}
 		
 		// check each visitors preference
-	    // print whether they like this location
+	        // print whether they like this location
 		public void print_preference(String visi, String loc_curr, int iteration, Visitors visitors)
 		{
 			int flag;
@@ -126,7 +126,7 @@ public class CitySim9002 {
 		
 		public static void main(String[] args) {
 			
-		    // enter seed
+		        // enter seed
 			// if seed is not an positive integer, exit
 			int seed;
 			try{
@@ -161,7 +161,7 @@ public class CitySim9002 {
 	    		String visi_curr = citysim.get_visitor(visitor_num, visitors);
 	    		System.out.println("Visitor"+ iteration +" is a "+ visi_curr +". ");
 	    		
-	            // visitor must visit at least one place
+	                // visitor must visit at least one place
 	    		// if random generator generate "left" as the first place
 	    		// do it again
 	    		int loc_num = citysim.location_first_random(seed);
