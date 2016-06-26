@@ -40,10 +40,10 @@ public class RubyBDDTest {
 
 		// click button "Tokenize"
 		try{
-			    WebElement token = driver.findElement(By.xpath("//form/p[2]/input[1]"));
-          token.click();
-          WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
-          assertTrue(result.getText().contains("on_sp"));
+			WebElement token = driver.findElement(By.xpath("//form/p[2]/input[1]"));
+                        token.click();
+                        WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
+                        assertTrue(result.getText().contains("on_sp"));
 		}catch(NoSuchElementException nseex){
 			    fail();
 		}
@@ -62,10 +62,10 @@ public class RubyBDDTest {
 
 		// click button "Tokenize"
 		try{
-	   		  WebElement token = driver.findElement(By.xpath("//form/p[2]/input[1]"));
-	        token.click();
-	        WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
-	        assertTrue(result.getText().contains("on_ident"));
+	   		 WebElement token = driver.findElement(By.xpath("//form/p[2]/input[1]"));
+	                 token.click();
+	                 WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
+	                 assertTrue(result.getText().contains("on_ident"));
 	    }catch(NoSuchElementException nseex){
 			    fail();
 		}
@@ -85,10 +85,10 @@ public class RubyBDDTest {
 
 		// click button "Tokenize"
 		try{
-			    WebElement token = driver.findElement(By.xpath("//form/p[2]/input[1]"));
-	        token.click();
-	        WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
-	        assertTrue(result.getText().contains("on_nl"));
+			 WebElement token = driver.findElement(By.xpath("//form/p[2]/input[1]"));
+	                 token.click();
+	                 WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
+	                 assertTrue(result.getText().contains("on_nl"));
 	    }catch(NoSuchElementException nseex){
 			    fail();
 		}
@@ -114,11 +114,11 @@ public class RubyBDDTest {
 
 		// click button "Parse"
 		try{
-			    WebElement parse = driver.findElement(By.xpath("//form/p[2]/input[2]"));
-	        parse.click();
-	        WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
-	        assertTrue(result.getText().contains("+") && result.getText().contains("-")&& result.getText().contains("puts"));
-	    }catch(NoSuchElementException nseex){
+			 WebElement parse = driver.findElement(By.xpath("//form/p[2]/input[2]"));
+	                 parse.click();
+	                 WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
+	                 assertTrue(result.getText().contains("+") && result.getText().contains("-")&& result.getText().contains("puts"));
+	        }catch(NoSuchElementException nseex){
 			    fail();
 		}
 	}
@@ -135,10 +135,10 @@ public class RubyBDDTest {
 
 		// click button "Parse"
 		try{
-			  WebElement parse = driver.findElement(By.xpath("//form/p[2]/input[2]"));
-		    parse.click();
-		    WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
-		    assertFalse(result.getText().contains("\" \"") || result.getText().contains("on_sp") );
+			 WebElement parse = driver.findElement(By.xpath("//form/p[2]/input[2]"));
+		         parse.click();
+		         WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
+		         assertFalse(result.getText().contains("\" \"") || result.getText().contains("on_sp") );
 		}catch(NoSuchElementException nseex){
 			  fail();
 		}
@@ -163,10 +163,10 @@ public class RubyBDDTest {
 
 		// click button "Compile"
 		try{
-			  WebElement compile = driver.findElement(By.xpath("//form/p[2]/input[3]"));
-		    compile.click();
-		    WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
-		    assertTrue(result.getText().contains("putstring"));
+			 WebElement compile = driver.findElement(By.xpath("//form/p[2]/input[3]"));
+		         compile.click();
+		         WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
+		         assertTrue(result.getText().contains("putstring"));
 		}catch(NoSuchElementException nseex){
 			  fail();
 		}
@@ -184,10 +184,10 @@ public class RubyBDDTest {
 
 		// click button "Compile"
 		try{
-			  WebElement compile = driver.findElement(By.xpath("//form/p[2]/input[3]"));
-		    compile.click();
-		    WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
-		    assertFalse(!result.getText().contains("opt_plus"));
+			 WebElement compile = driver.findElement(By.xpath("//form/p[2]/input[3]"));
+		         compile.click();
+		         WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
+		         assertFalse(!result.getText().contains("opt_plus"));
 		}catch(NoSuchElementException nseex){
 			  fail();
 		}
@@ -205,10 +205,10 @@ public class RubyBDDTest {
 
 		// click button "Compile"
 		try{
-			  WebElement compile = driver.findElement(By.xpath("//form/p[2]/input[3]"));
-		    compile.click();
-		    WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
-		    assertFalse(!result.getText().contains("opt_minus"));
+			 WebElement compile = driver.findElement(By.xpath("//form/p[2]/input[3]"));
+		         compile.click();
+		         WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
+		         assertFalse(!result.getText().contains("opt_minus"));
 		}catch(NoSuchElementException nseex){
 			  fail();
 		}
@@ -226,10 +226,10 @@ public class RubyBDDTest {
 
 		// click button "Compile"
 		try{
-			  WebElement compile = driver.findElement(By.xpath("//form/p[2]/input[3]"));
-		    compile.click();
-		    WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
-		    assertFalse(!result.getText().contains("opt_div"));
+			 WebElement compile = driver.findElement(By.xpath("//form/p[2]/input[3]"));
+		         compile.click();
+		         WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
+		         assertFalse(!result.getText().contains("opt_div"));
 		}catch(NoSuchElementException nseex){
 			  fail();
 		}
@@ -247,10 +247,10 @@ public class RubyBDDTest {
 
 		// click button "Compile"
 		try{
-			  WebElement compile = driver.findElement(By.xpath("//form/p[2]/input[3]"));
-		    compile.click();
-		    WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
-		    assertTrue(result.getText().contains("opt_mult"));
+			 WebElement compile = driver.findElement(By.xpath("//form/p[2]/input[3]"));
+		         compile.click();
+		         WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
+		         assertTrue(result.getText().contains("opt_mult"));
 		}catch(NoSuchElementException nseex){
 			  fail();
 		}
@@ -269,10 +269,10 @@ public class RubyBDDTest {
 
 		// click button "Compile"
 		try{
-			  WebElement compile = driver.findElement(By.xpath("//form/p[2]/input[3]"));
-		    compile.click();
-		    WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
-		    assertTrue(result.getText().contains("putobject"));
+			 WebElement compile = driver.findElement(By.xpath("//form/p[2]/input[3]"));
+		         compile.click();
+		         WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
+		         assertTrue(result.getText().contains("putobject"));
 		}catch(NoSuchElementException nseex){
 			  fail();
 		}
