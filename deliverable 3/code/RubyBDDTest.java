@@ -28,8 +28,24 @@ public class RubyBDDTest {
 	// So that I can do further processing towards that.
 	//--------------------------------------------------------------
 
-	// Given that I am on the main page, and write a line of code,
-	// that is "a = 1 + 2"
+        // Given that I am on the main page, 
+	// When I click Tokenize
+	// Then I should go to a tokenize page. 
+	@Test
+	public void testTokenizePage()
+	{
+		try{
+			WebElement token = driver.findElement(By.xpath("//form/p[2]/input[1]"));
+	        token.click();
+			WebElement token_text = driver.findElement(By.xpath("//body/h1"));
+			assertTrue(token_text.getText().contains("Tokenize"));
+		}catch(NoSuchElementException nseex){
+			fail();
+		}
+	}
+
+
+	// Given that I am on the main page, and write a line of code, that is "a = 1 + 2"
 	// When I click Tokenize
 	// Then I should see "on_sp" in the new page.
 	@Test
@@ -47,11 +63,9 @@ public class RubyBDDTest {
 		}catch(NoSuchElementException nseex){
 			    fail();
 		}
-
 	}
 
-	// Given that I am on the main page, and write one line of code,
-	// that is "puts 'test puts'"
+	// Given that I am on the main page, and write one line of code, that is "puts 'test puts'"
 	// When I click Tokenize
 	// Then I should see "on_ident" in the new page.
 	@Test
@@ -72,15 +86,13 @@ public class RubyBDDTest {
 	}
 
 
-	// Given that I am on the main page, and write code,
-	// that is "a = 1 + 3\nb = 3"
+	// Given that I am on the main page, and write code, that is "a = 1 + 3\nb = 3"
 	// When I click Tokenize
 	// Then I should see "on_nl" in the new page.
 	@Test
 	public void testEnter()
 	{
 		// type code
-		//driver.findElement(By.id("code_code")).sendKeys("a = 1 + 3 \r\n b = 3");
 		driver.findElement(By.id("code_code")).sendKeys("a = 1 + 3\nb = 3" );
 
 		// click button "Tokenize"
@@ -102,8 +114,25 @@ public class RubyBDDTest {
 	// So that I can understand the structure of the code
 	//-----------------------------------------------------------
 
-	// Given that I am on the main page, and write code,
-	// that is "a = 1 + 3 - 2\nputs a"
+        // Given that I am on the main page, 
+	// When I click Parse
+	// Then I should go to a parse page. 
+	@Test
+	public void testParsePage()
+	{
+		try{
+			WebElement parse = driver.findElement(By.xpath("//form/p[2]/input[2]"));
+			parse.click();
+			WebElement parse_text = driver.findElement(By.xpath("//body/h1"));
+			assertTrue(parse_text.getText().contains("Parse"));
+		}catch(NoSuchElementException nseex){
+			fail();
+		}
+	}
+
+
+
+	// Given that I am on the main page, and write code, that is "a = 1 + 3 - 2\nputs a"
 	// When I click Parse
 	// Then I should see "+", "-" or "puts" in the new page.
 	@Test
@@ -123,8 +152,7 @@ public class RubyBDDTest {
 		}
 	}
 
-	// Given that I am on the main page, and write code,
-	// that is "a = 1 + 3\nputs a"
+	// Given that I am on the main page, and write code, that is "a = 1 + 3\nputs a"
 	// When I click Parse
 	// Then I can not see "\" \"" or "on_sp"in the new page.
 	@Test
@@ -151,8 +179,25 @@ public class RubyBDDTest {
 	// So that machine can understand my code and do what I want.
 	//----------------------------------------------------------------------
 
-	// Given that I am on the main page, and write code,
-	// that is "type = \"Noogie Cat\"\nputs \"The is a: \" + type"
+        // Given that I am on the main page, 
+	// When I click Compile
+	// Then I should go to a compile page. 
+	@Test
+	public void testCompilePage()
+	{
+		try{
+			WebElement compile = driver.findElement(By.xpath("//form/p[2]/input[3]"));
+			compile.click();
+			WebElement compile_text = driver.findElement(By.xpath("//body/h1"));
+			assertTrue(compile_text.getText().contains("Compile"));
+		}catch(NoSuchElementException nseex){
+			fail();
+		}
+	}
+
+
+
+	// Given that I am on the main page, and write code, that is "type = \"Noogie Cat\"\nputs \"The is a: \" + type"
 	// When I click Compile
 	// Then I can see "putstring" in the new page.
 	@Test
@@ -172,8 +217,7 @@ public class RubyBDDTest {
 		}
 	}
 
-	// Given that I am on the main page, and write code,
-	// that is "a = 1 + 3"
+	// Given that I am on the main page, and write code, that is "a = 1 + 3"
 	// When I click Compile
 	// Then I can see "opt_plus" in the new page.
 	@Test
@@ -193,8 +237,7 @@ public class RubyBDDTest {
 		}
 	}
 
-	// Given that I am on the main page, and write code,
-	// that is "a = 45-12"
+	// Given that I am on the main page, and write code, that is "a = 45-12"
 	// When I click Compile
 	// Then I can see "opt_minus" in the new page.
 	@Test
@@ -214,8 +257,7 @@ public class RubyBDDTest {
 		}
   }
 
-	// Given that I am on the main page, and write code,
-	// that is "a = 45/12"
+	// Given that I am on the main page, and write code, that is "a = 45/12"
 	// When I click Compile
 	// Then I can see "opt_div" in the new page.
 	@Test
@@ -235,8 +277,7 @@ public class RubyBDDTest {
 		}
   }
 
-	// Given that I am on the main page, and write code,
-	// that is "a = 3*5"
+	// Given that I am on the main page, and write code, that is "a = 3*5"
 	// When I click Compile
 	// Then I can see "opt_mult" in the new page.
 	@Test
@@ -257,8 +298,7 @@ public class RubyBDDTest {
   }
 
 
-	// Given that I am on the main page, and write code,
-	// that is "a = 3*5+2"
+	// Given that I am on the main page, and write code, that is "a = 3*5+2"
 	// When I click Compile
 	// Then I can see "putobject" in the new page.
 	@Test
@@ -277,7 +317,4 @@ public class RubyBDDTest {
 			  fail();
 		}
   }
-
-
-
 }
