@@ -36,7 +36,7 @@ public class RubyBDDTest {
 	{
 		try{
 			WebElement token = driver.findElement(By.xpath("//form/p[2]/input[1]"));
-	        token.click();
+	                token.click();
 			WebElement token_text = driver.findElement(By.xpath("//body/h1"));
 			assertTrue(token_text.getText().contains("Tokenize"));
 		}catch(NoSuchElementException nseex){
