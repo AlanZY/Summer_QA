@@ -49,7 +49,7 @@ public class RubyBDDTest {
 	// When I click Tokenize
 	// Then I should see "on_sp" in the new page.
 	@Test
-	public void testSpace()
+	public void testTokenizeSpace()
 	{
 		// type code
 		driver.findElement(By.id("code_code")).sendKeys("a = 1 + 2");
@@ -69,7 +69,7 @@ public class RubyBDDTest {
 	// When I click Tokenize
 	// Then I should see "on_ident" in the new page.
 	@Test
-	public void testPuts()
+	public void testTokenizePuts()
 	{
 		// type code
 		driver.findElement(By.id("code_code")).sendKeys("puts 'test puts'");
@@ -90,7 +90,7 @@ public class RubyBDDTest {
 	// When I click Tokenize
 	// Then I should see "on_nl" in the new page.
 	@Test
-	public void testEnter()
+	public void testTokenizeEnter()
 	{
 		// type code
 		driver.findElement(By.id("code_code")).sendKeys("a = 1 + 3\nb = 3" );
@@ -136,7 +136,7 @@ public class RubyBDDTest {
 	// When I click Parse
 	// Then I should see "+", "-" or "puts" in the new page.
 	@Test
-	public void testNonWhitespace()
+	public void testParseNonWhitespace()
 	{
 		// type code
 		driver.findElement(By.id("code_code")).sendKeys("a = 1 + 3 - 2\nputs a");
@@ -156,7 +156,7 @@ public class RubyBDDTest {
 	// When I click Parse
 	// Then I can not see "\" \"" or "on_sp"in the new page.
 	@Test
-	public void testWhitespace()
+	public void testParseWhitespace()
 	{
 		// type code
 		driver.findElement(By.id("code_code")).sendKeys("a = 1 + 3\nputs a");
@@ -201,7 +201,7 @@ public class RubyBDDTest {
 	// When I click Compile
 	// Then I can see "putstring" in the new page.
 	@Test
-	public void testString()
+	public void testCompileString()
 	{
 		// type code
 		driver.findElement(By.id("code_code")).sendKeys("type = \"Noogie Cat\"\nputs \"The is a: \" + type");
@@ -221,7 +221,7 @@ public class RubyBDDTest {
 	// When I click Compile
 	// Then I can see "opt_plus" in the new page.
 	@Test
-	public void testPlus()
+	public void testCompilePlus()
 	{
 		// type code
 		driver.findElement(By.id("code_code")).sendKeys("a = 1 + 3");
@@ -241,7 +241,7 @@ public class RubyBDDTest {
 	// When I click Compile
 	// Then I can see "opt_minus" in the new page.
 	@Test
-	public void testMinus()
+	public void testCompileMinus()
 	{
 		// type code
 		driver.findElement(By.id("code_code")).sendKeys("a = 45-12");
@@ -261,7 +261,7 @@ public class RubyBDDTest {
 	// When I click Compile
 	// Then I can see "opt_div" in the new page.
 	@Test
-	public void testDiv()
+	public void testCompileDiv()
 	{
 		// type code
 		driver.findElement(By.id("code_code")).sendKeys("a = 45/12");
@@ -281,7 +281,7 @@ public class RubyBDDTest {
 	// When I click Compile
 	// Then I can see "opt_mult" in the new page.
 	@Test
-	public void testMult()
+	public void testCompileMult()
 	{
 		// type code
 		driver.findElement(By.id("code_code")).sendKeys("a = 3*5");
@@ -302,7 +302,7 @@ public class RubyBDDTest {
 	// When I click Compile
 	// Then I can see "putobject" in the new page.
 	@Test
-	public void testObject()
+	public void testCompileObject()
 	{
 		// type code
 		driver.findElement(By.id("code_code")).sendKeys("a = 3*5+2");
