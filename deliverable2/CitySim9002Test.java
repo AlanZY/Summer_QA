@@ -206,6 +206,7 @@ public class CitySim9002Test {
 		CitySim9002 citysim = new CitySim9002();
 		int result;
 		result = citysim.location_random();
+		// should be more specific
 		assertTrue(result>=0 && result<=4);
 	}
 	

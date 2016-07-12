@@ -28,67 +28,79 @@ public class RubyBDDTest {
 	// So that I can do further processing towards that.
 	//--------------------------------------------------------------
 
-	// Given that I am on the main page, and write a line of code,
-	// that is "a = 1 + 2"
+        // Given that I am on the main page, 
+	// When I click Tokenize
+	// Then I should go to a tokenize page. 
+	@Test
+	public void testTokenizePage()
+	{
+		try{
+			WebElement token = driver.findElement(By.xpath("//form/p[2]/input[1]"));
+	                token.click();
+			WebElement token_text = driver.findElement(By.xpath("//body/h1"));
+			assertTrue(token_text.getText().contains("Tokenize"));
+		}catch(NoSuchElementException nseex){
+			fail();
+		}
+	}
+
+
+	// Given that I am on the main page, and write a line of code, that is "a = 1 + 2"
 	// When I click Tokenize
 	// Then I should see "on_sp" in the new page.
 	@Test
-	public void testSpace()
+	public void testTokenizeSpace()
 	{
 		// type code
 		driver.findElement(By.id("code_code")).sendKeys("a = 1 + 2");
 
 		// click button "Tokenize"
 		try{
-			    WebElement token = driver.findElement(By.xpath("//form/p[2]/input[1]"));
-          token.click();
-          WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
-          assertTrue(result.getText().contains("on_sp"));
+			WebElement token = driver.findElement(By.xpath("//form/p[2]/input[1]"));
+                        token.click();
+                        WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
+                        assertTrue(result.getText().contains("on_sp"));
 		}catch(NoSuchElementException nseex){
 			    fail();
 		}
-
 	}
 
-	// Given that I am on the main page, and write one line of code,
-	// that is "puts 'test puts'"
+	// Given that I am on the main page, and write one line of code, that is "puts 'test puts'"
 	// When I click Tokenize
 	// Then I should see "on_ident" in the new page.
 	@Test
-	public void testPuts()
+	public void testTokenizePuts()
 	{
 		// type code
 		driver.findElement(By.id("code_code")).sendKeys("puts 'test puts'");
 
 		// click button "Tokenize"
 		try{
-	   		  WebElement token = driver.findElement(By.xpath("//form/p[2]/input[1]"));
-	        token.click();
-	        WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
-	        assertTrue(result.getText().contains("on_ident"));
+	   		 WebElement token = driver.findElement(By.xpath("//form/p[2]/input[1]"));
+	                 token.click();
+	                 WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
+	                 assertTrue(result.getText().contains("on_ident"));
 	    }catch(NoSuchElementException nseex){
 			    fail();
 		}
 	}
 
 
-	// Given that I am on the main page, and write code,
-	// that is "a = 1 + 3\nb = 3"
+	// Given that I am on the main page, and write code, that is "a = 1 + 3\nb = 3"
 	// When I click Tokenize
 	// Then I should see "on_nl" in the new page.
 	@Test
-	public void testEnter()
+	public void testTokenizeEnter()
 	{
 		// type code
-		//driver.findElement(By.id("code_code")).sendKeys("a = 1 + 3 \r\n b = 3");
 		driver.findElement(By.id("code_code")).sendKeys("a = 1 + 3\nb = 3" );
 
 		// click button "Tokenize"
 		try{
-			    WebElement token = driver.findElement(By.xpath("//form/p[2]/input[1]"));
-	        token.click();
-	        WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
-	        assertTrue(result.getText().contains("on_nl"));
+			 WebElement token = driver.findElement(By.xpath("//form/p[2]/input[1]"));
+	                 token.click();
+	                 WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
+	                 assertTrue(result.getText().contains("on_nl"));
 	    }catch(NoSuchElementException nseex){
 			    fail();
 		}
@@ -102,43 +114,59 @@ public class RubyBDDTest {
 	// So that I can understand the structure of the code
 	//-----------------------------------------------------------
 
-	// Given that I am on the main page, and write code,
-	// that is "a = 1 + 3 - 2\nputs a"
+        // Given that I am on the main page, 
+	// When I click Parse
+	// Then I should go to a parse page. 
+	@Test
+	public void testParsePage()
+	{
+		try{
+			WebElement parse = driver.findElement(By.xpath("//form/p[2]/input[2]"));
+			parse.click();
+			WebElement parse_text = driver.findElement(By.xpath("//body/h1"));
+			assertTrue(parse_text.getText().contains("Parse"));
+		}catch(NoSuchElementException nseex){
+			fail();
+		}
+	}
+
+
+
+	// Given that I am on the main page, and write code, that is "a = 1 + 3 - 2\nputs a"
 	// When I click Parse
 	// Then I should see "+", "-" or "puts" in the new page.
 	@Test
-	public void testNonWhitespace()
+	public void testParseNonWhitespace()
 	{
 		// type code
 		driver.findElement(By.id("code_code")).sendKeys("a = 1 + 3 - 2\nputs a");
 
 		// click button "Parse"
 		try{
-			    WebElement parse = driver.findElement(By.xpath("//form/p[2]/input[2]"));
-	        parse.click();
-	        WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
-	        assertTrue(result.getText().contains("+") && result.getText().contains("-")&& result.getText().contains("puts"));
-	    }catch(NoSuchElementException nseex){
+			 WebElement parse = driver.findElement(By.xpath("//form/p[2]/input[2]"));
+	                 parse.click();
+	                 WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
+	                 assertTrue(result.getText().contains("+") && result.getText().contains("-")&& result.getText().contains("puts"));
+	        }catch(NoSuchElementException nseex){
 			    fail();
 		}
 	}
 
-	// Given that I am on the main page, and write code,
-	// that is "a = 1 + 3\nputs a"
+	// Given that I am on the main page, and write code, that is "a = 1 + 3\nputs a"
 	// When I click Parse
 	// Then I can not see "\" \"" or "on_sp"in the new page.
 	@Test
-	public void testWhitespace()
+	public void testParseWhitespace()
 	{
 		// type code
 		driver.findElement(By.id("code_code")).sendKeys("a = 1 + 3\nputs a");
 
 		// click button "Parse"
 		try{
-			  WebElement parse = driver.findElement(By.xpath("//form/p[2]/input[2]"));
-		    parse.click();
-		    WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
-		    assertFalse(result.getText().contains("\" \"") || result.getText().contains("on_sp") );
+			 WebElement parse = driver.findElement(By.xpath("//form/p[2]/input[2]"));
+		         parse.click();
+		         WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
+		         assertFalse(result.getText().contains("\" \"") || result.getText().contains("on_sp") );
 		}catch(NoSuchElementException nseex){
 			  fail();
 		}
@@ -151,133 +179,142 @@ public class RubyBDDTest {
 	// So that machine can understand my code and do what I want.
 	//----------------------------------------------------------------------
 
-	// Given that I am on the main page, and write code,
-	// that is "type = \"Noogie Cat\"\nputs \"The is a: \" + type"
+        // Given that I am on the main page, 
+	// When I click Compile
+	// Then I should go to a compile page. 
+	@Test
+	public void testCompilePage()
+	{
+		try{
+			WebElement compile = driver.findElement(By.xpath("//form/p[2]/input[3]"));
+			compile.click();
+			WebElement compile_text = driver.findElement(By.xpath("//body/h1"));
+			assertTrue(compile_text.getText().contains("Compile"));
+		}catch(NoSuchElementException nseex){
+			fail();
+		}
+	}
+
+
+
+	// Given that I am on the main page, and write code, that is "type = \"Noogie Cat\"\nputs \"The is a: \" + type"
 	// When I click Compile
 	// Then I can see "putstring" in the new page.
 	@Test
-	public void testString()
+	public void testCompileString()
 	{
 		// type code
 		driver.findElement(By.id("code_code")).sendKeys("type = \"Noogie Cat\"\nputs \"The is a: \" + type");
 
 		// click button "Compile"
 		try{
-			  WebElement compile = driver.findElement(By.xpath("//form/p[2]/input[3]"));
-		    compile.click();
-		    WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
-		    assertTrue(result.getText().contains("putstring"));
+			 WebElement compile = driver.findElement(By.xpath("//form/p[2]/input[3]"));
+		         compile.click();
+		         WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
+		         assertTrue(result.getText().contains("putstring"));
 		}catch(NoSuchElementException nseex){
 			  fail();
 		}
 	}
 
-	// Given that I am on the main page, and write code,
-	// that is "a = 1 + 3"
+	// Given that I am on the main page, and write code, that is "a = 1 + 3"
 	// When I click Compile
 	// Then I can see "opt_plus" in the new page.
 	@Test
-	public void testPlus()
+	public void testCompilePlus()
 	{
 		// type code
 		driver.findElement(By.id("code_code")).sendKeys("a = 1 + 3");
 
 		// click button "Compile"
 		try{
-			  WebElement compile = driver.findElement(By.xpath("//form/p[2]/input[3]"));
-		    compile.click();
-		    WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
-		    assertFalse(!result.getText().contains("opt_plus"));
+			 WebElement compile = driver.findElement(By.xpath("//form/p[2]/input[3]"));
+		         compile.click();
+		         WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
+		         assertFalse(!result.getText().contains("opt_plus"));
 		}catch(NoSuchElementException nseex){
 			  fail();
 		}
 	}
 
-	// Given that I am on the main page, and write code,
-	// that is "a = 45-12"
+	// Given that I am on the main page, and write code, that is "a = 45-12"
 	// When I click Compile
 	// Then I can see "opt_minus" in the new page.
 	@Test
-	public void testMinus()
+	public void testCompileMinus()
 	{
 		// type code
 		driver.findElement(By.id("code_code")).sendKeys("a = 45-12");
 
 		// click button "Compile"
 		try{
-			  WebElement compile = driver.findElement(By.xpath("//form/p[2]/input[3]"));
-		    compile.click();
-		    WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
-		    assertFalse(!result.getText().contains("opt_minus"));
+			 WebElement compile = driver.findElement(By.xpath("//form/p[2]/input[3]"));
+		         compile.click();
+		         WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
+		         assertFalse(!result.getText().contains("opt_minus"));
 		}catch(NoSuchElementException nseex){
 			  fail();
 		}
   }
 
-	// Given that I am on the main page, and write code,
-	// that is "a = 45/12"
+	// Given that I am on the main page, and write code, that is "a = 45/12"
 	// When I click Compile
 	// Then I can see "opt_div" in the new page.
 	@Test
-	public void testDiv()
+	public void testCompileDiv()
 	{
 		// type code
 		driver.findElement(By.id("code_code")).sendKeys("a = 45/12");
 
 		// click button "Compile"
 		try{
-			  WebElement compile = driver.findElement(By.xpath("//form/p[2]/input[3]"));
-		    compile.click();
-		    WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
-		    assertFalse(!result.getText().contains("opt_div"));
+			 WebElement compile = driver.findElement(By.xpath("//form/p[2]/input[3]"));
+		         compile.click();
+		         WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
+		         assertFalse(!result.getText().contains("opt_div"));
 		}catch(NoSuchElementException nseex){
 			  fail();
 		}
   }
 
-	// Given that I am on the main page, and write code,
-	// that is "a = 3*5"
+	// Given that I am on the main page, and write code, that is "a = 3*5"
 	// When I click Compile
 	// Then I can see "opt_mult" in the new page.
 	@Test
-	public void testMult()
+	public void testCompileMult()
 	{
 		// type code
 		driver.findElement(By.id("code_code")).sendKeys("a = 3*5");
 
 		// click button "Compile"
 		try{
-			  WebElement compile = driver.findElement(By.xpath("//form/p[2]/input[3]"));
-		    compile.click();
-		    WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
-		    assertTrue(result.getText().contains("opt_mult"));
+			 WebElement compile = driver.findElement(By.xpath("//form/p[2]/input[3]"));
+		         compile.click();
+		         WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
+		         assertTrue(result.getText().contains("opt_mult"));
 		}catch(NoSuchElementException nseex){
 			  fail();
 		}
   }
 
 
-	// Given that I am on the main page, and write code,
-	// that is "a = 3*5+2"
+	// Given that I am on the main page, and write code, that is "a = 3*5+2"
 	// When I click Compile
 	// Then I can see "putobject" in the new page.
 	@Test
-	public void testObject()
+	public void testCompileObject()
 	{
 		// type code
 		driver.findElement(By.id("code_code")).sendKeys("a = 3*5+2");
 
 		// click button "Compile"
 		try{
-			  WebElement compile = driver.findElement(By.xpath("//form/p[2]/input[3]"));
-		    compile.click();
-		    WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
-		    assertTrue(result.getText().contains("putobject"));
+			 WebElement compile = driver.findElement(By.xpath("//form/p[2]/input[3]"));
+		         compile.click();
+		         WebElement result = driver.findElement(By.xpath("//body/p[1]/code[1]"));
+		         assertTrue(result.getText().contains("putobject"));
 		}catch(NoSuchElementException nseex){
 			  fail();
 		}
   }
-
-
-
 }
