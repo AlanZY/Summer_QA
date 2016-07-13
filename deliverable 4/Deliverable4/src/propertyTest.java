@@ -75,7 +75,7 @@ public class propertyTest {
 	}
 	
 	
-	// property: the last element is larger than any other number in 
+	// property 4: the last element is larger than any other number in 
 	//           the array
 	@Test
 	public void testlastlargest()
