@@ -13,8 +13,11 @@ public class MainPanel extends JPanel {
 
     private int _size = 0;
 
+    
+//--------------------------- modified ----------------------
 //  private int _maxCount = 10000;
 
+    // can be deleted
     public int _r = 1000;
     
     private boolean _running = false;
@@ -31,6 +34,8 @@ public class MainPanel extends JPanel {
 	return _cells;
     }
 
+    
+//--------------------------- modified ----------------------    
     private int convertToInt(int x) {
     // delete those codes
     /*
@@ -77,6 +82,8 @@ public class MainPanel extends JPanel {
 
     }
     
+    
+//--------------------------- modified ----------------------    
     private boolean iterateCell(int x, int y) {
 	boolean toReturn = false;
 	boolean alive = _cells[x][y].getAlive();
@@ -268,23 +275,21 @@ public class MainPanel extends JPanel {
     /**
      * Run the system continuously.
      */
-
+ //--------------------------- modified ----------------------
     public void runContinuous() {
 	_running = true;
 	while (_running) {
 	    System.out.println("Running...");
 	    // delete
 	    /*
-	    int origR = _r;
-       
+	    int origR = _r;       
 	    try {
-		Thread.sleep(1);
+		Thread.sleep(20);
 	    } catch (InterruptedException iex) { }
 	    for (int j=0; j < _maxCount; j++) {
 	    	_r += (j % _size) % _maxCount;
 		_r += _maxCount;
-	    }
-        
+	    }        
 	    _r = origR;
 	    */
 	    backup();
@@ -295,7 +300,7 @@ public class MainPanel extends JPanel {
     // used for unit test
     public int runContinuoustestr(int size, int _maxCount) {
     	_running = true;
-//    	while (_running) {    	   
+    	// 	while (_running) {    	   
     		System.out.println("Running...");
     	    // delete
     	    
@@ -311,7 +316,7 @@ public class MainPanel extends JPanel {
             */
     	    _r = origR;
     	    
-//    	}
+    	// }
 		return _r;
         }
 

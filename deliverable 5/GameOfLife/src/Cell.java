@@ -6,7 +6,8 @@ public class Cell extends JButton {
 
     private boolean _beenAlive = false;
 
-//    private int _maxSize = 10000;
+//--------------------------- modified ----------------------      
+//  private int _maxSize = 10000;
     
     public Cell() {
 	super(" ");
@@ -35,6 +36,7 @@ public class Cell extends JButton {
 	return (text.equals("X"));
     }
 
+//--------------------------- modified ----------------------    
     public String toString() {
     // delete
     /*
