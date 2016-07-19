@@ -89,7 +89,7 @@ public class MainPanel extends JPanel {
 	boolean alive = _cells[x][y].getAlive();
 	int numNeighbors = getNumNeighbors(x, y);
 	// modify 
-    /*
+        /*
 	if (alive) {
 	    if (numNeighbors < 2 || numNeighbors > 3) {
 		toReturn = false;
@@ -103,7 +103,7 @@ public class MainPanel extends JPanel {
 		toReturn = false;
 	    }
 	}
-    */
+        */
 	if(alive) { 
 		if(numNeighbors >= 2  && numNeighbors <= 3){
            toReturn = true;
@@ -300,7 +300,7 @@ public class MainPanel extends JPanel {
     // used for unit test
     public int runContinuoustestr(int size, int _maxCount) {
     	_running = true;
-    	// 	while (_running) {    	   
+    	// while (_running) {    	   
     		System.out.println("Running...");
     	    // delete
     	    
@@ -317,8 +317,8 @@ public class MainPanel extends JPanel {
     	    _r = origR;
     	    
     	// }
-		return _r;
-        }
+	return _r;
+     }
 
     
 
